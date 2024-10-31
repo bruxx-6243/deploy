@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20^" # Remplace par la version de Node.js que tu utilises
+          node-version: "23" # Remplace par la version de Node.js que tu utilises
 
       - name: Install PNPM
         run: npm install -g pnpm
