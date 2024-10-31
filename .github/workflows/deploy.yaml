@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # ou master selon la branche par défaut de ton repo
+      - main # Déclenche le déploiement lors d'un push sur la branche principale
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "23" # Remplace par la version de Node.js que tu utilises
+          node-version: "18" # Mettez à jour avec une version stable de Node.js
 
       - name: Install PNPM
         run: npm install -g pnpm
@@ -25,14 +25,10 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: pnpm build # Construire l'application Vite
-
-      - name: Set up Git credentials
-        run: |
-          git config --global url."https://${{ secrets.PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+        run: pnpm build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Répertoire de sortie par défaut de Vite
+          publish_dir: ./dist # Chemin de sortie par défaut de Vite
