@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Mettez à jour avec une version stable de Node.js
+          node-version: "18" # Version stable de Node.js
 
       - name: Install PNPM
         run: npm install -g pnpm
@@ -26,6 +26,13 @@ jobs:
 
       - name: Build project
         run: pnpm build
+
+      - name: Force update GitHub Pages cache
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Force GitHub Pages update" || echo "No changes to commit"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
