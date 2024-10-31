@@ -1,7 +1,7 @@
 name: Deploy static content to Pages
 
 on:
-  push:
+  pull:
     branches: ["main"]
 
   workflow_dispatch:
