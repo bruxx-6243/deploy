@@ -19,6 +19,7 @@ jobs:
   deploy:
     env:
       VITE_TEST: ${{ vars.VITE_TEST }}
+      VITE_SECRET_HELLO: ${{ secrets.VITE_SECRET_HELLO }}
 
     environment:
       name: github-pages
