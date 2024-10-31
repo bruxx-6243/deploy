@@ -27,6 +27,10 @@ jobs:
       - name: Build project
         run: pnpm build # Construire l'application Vite
 
+      - name: Set up Git credentials
+        run: |
+          git config --global url."https://${{ secrets.PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
