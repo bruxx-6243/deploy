@@ -18,7 +18,7 @@ concurrency:
 jobs:
   deploy:
     env:
-      VITE_TEST: $VITE_TEST
+      VITE_TEST: TOTO
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
